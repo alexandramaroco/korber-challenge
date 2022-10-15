@@ -52,18 +52,18 @@
 export default {
   props: ['toggle', 'cart', 'inventory', 'remove'],
   methods: {
-    getPrice (name) {
+    getPrice (id) {
       const product = this.inventory.find((p) => {
-        return p.name === name
+        return p.id === id
       })
-      return product.price.USD.toFixed(2)
+      return product.price.toFixed(2)
     },
     calculateTotal () {
       // Gives me an easy array of values out of an object, rather than looping through an object directly
       // Object.values(cart) : gives an easy array with all the quantities in the cart
       // reduce((acc)) : creating a sum on each iteration through the loop (acc = accumulator)
       // entries(x) [key, value]
-      const total = Object.entries(this.cart).reduce((acc, curr, index) => {
+      const total = Object.entries(this.cart).reduce((acc, curr) => {
         return acc + (curr[1] * this.getPrice(curr[0]))
       }, 0) // acc starts at 0
       return total.toFixed(2)

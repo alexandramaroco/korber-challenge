@@ -52,7 +52,8 @@ export default {
   data () {
     return {
       inventory: [],
-      cart: {}
+      cart: {},
+      showSidebar: false
     }
   },
   computed: {
@@ -63,15 +64,15 @@ export default {
     }
   },
   methods: {
-    addToCart (name, quantity) {
-      if (!this.cart[name]) this.cart[name] = 0
-      this.cart[name] += quantity
+    addToCart (id, quantity) {
+      if (!this.cart[id]) this.cart[id] = 0
+      this.cart[id] += quantity
     },
     toggleSidebar () {
       this.showSidebar = !this.showSidebar
     },
-    removeItem (name) {
-      delete this.cart[name]
+    removeItem (id) {
+      delete this.cart[id]
     }
   },
   async mounted () {
