@@ -3,8 +3,29 @@
     <router-link to="/">Home</router-link> |
     <router-link to="/about">About</router-link>
   </nav>
+  <!--<AppHeader /> -->
+
   <router-view/>
 </template>
+
+<script>
+
+export default {
+  data () {
+    return {
+      inventory: []
+    }
+  },
+  async mounted () {
+    const res = await fetch('https://dummyjson.com/products')
+    const data = await res.json()
+    this.inventory = data
+  },
+  components: {
+  }
+}
+
+</script>
 
 <style lang="scss">
 #app {
