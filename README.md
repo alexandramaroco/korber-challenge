@@ -21,4 +21,4 @@ cd korber-challenge
 
 npm run serve
 
-## Copy the local host that shows in your console to your browser's URL and see the finished project!
+& copy the local host that shows in your console to your browser's URL and see the finished project!
