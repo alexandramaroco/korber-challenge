@@ -11,12 +11,15 @@
         <i class="icofont-spoon-and-fork"></i>
         <span>Home</span>
       </router-link>
+      <router-link to="/about" class="top-bar-link">
+        <span>About</span>
+      </router-link>
       <router-link to="/products" class="top-bar-link">
         <span>Products</span>
       </router-link>
-      <router-link to="/past-orders" class="top-bar-link">
+      <!--<router-link to="/past-orders" class="top-bar-link">
         <span>Past Orders</span>
-      </router-link>
+      </router-link>-->
     </nav>
     <div @click="toggleSidebar" class="top-bar-cart-link">
       <i class="icofont-cart-alt icofont-1x"></i>
@@ -24,23 +27,58 @@
     </div>
   </header>
 
-  <router-view/>
+  <router-view
+  :inventory="inventory"
+  :addToCart="addToCart"/>
+
+  <SidebarItem
+    v-if="showSidebar"
+    :toggle="toggleSidebar"
+    :cart="cart"
+    :inventory="inventory"
+    :remove="removeItem"
+  />
+
 </template>
 
 <script>
 
+import SidebarItem from '@/components/SidebarItem.vue'
+
 export default {
+  components: {
+    SidebarItem
+  },
   data () {
     return {
-      inventory: []
+      inventory: [],
+      cart: {}
+    }
+  },
+  computed: {
+    totalQuantity () {
+      return Object.values(this.cart).reduce((acc, curr) => {
+        return acc + curr
+      }, 0)
+    }
+  },
+  methods: {
+    addToCart (name, quantity) {
+      if (!this.cart[name]) this.cart[name] = 0
+      this.cart[name] += quantity
+    },
+    toggleSidebar () {
+      this.showSidebar = !this.showSidebar
+    },
+    removeItem (name) {
+      delete this.cart[name]
     }
   },
   async mounted () {
     const res = await fetch('https://dummyjson.com/products')
     const data = await res.json()
-    this.inventory = data
-  },
-  components: {
+    this.inventory = Array.from(data.products)
+    console.log(Array.from(data.products))
   }
 }
 

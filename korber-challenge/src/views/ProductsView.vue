@@ -1,3 +1,29 @@
 <template>
-    <h1>Products</h1>
+  <main class="wrapper">
+      <h1>Products</h1>
+
+      <div class="card-container">
+        <ProductCard
+          v-for="product in inventory.slice(0,6)"
+          :key="product.id"
+          class="card"
+          :product="product"
+          :addToCart="addToCart"
+        />
+      </div>
+    </main>
 </template>
+
+<script>
+// @ is an alias to /src
+/* import HelloWorld from '@/components/HelloWorld.vue' */
+import ProductCard from '@/components/ProductCard.vue'
+
+export default {
+  name: 'ProductsView',
+  props: ['inventory', 'addToCart'],
+  components: {
+    ProductCard
+  }
+}
+</script>
