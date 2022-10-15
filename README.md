@@ -1,5 +1,4 @@
-# Körber Challenge Pharma Frontend
-## korber-challenge
+# Körber Challenge Pharma Frontend (korber-challenge)
 ### Alexandra Maroco
 
 
