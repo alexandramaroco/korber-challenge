@@ -3,19 +3,13 @@
       <h1>Products</h1>
 
       <div class="card-container">
-        <Pagination v-model="page" :records="500" :per-page="25" @paginate="myCallback"></Pagination>
-        
+        <Pagination v-model="page" :records="500" :per-page="25" @paginate="myCallback"/>
         <ProductCard
           v-for="product in inventory"
           :key="product.id"
           class="card"
           :product="product"
           :addToCart="addToCart"/>
-
-        </Pagination>
-        
-        
-        />
       </div>
     </main>
 </template>
