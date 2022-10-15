@@ -1,20 +1,13 @@
 <template>
     <div class="card">
         <div class="card-title">
-            {{ product.name }}
+            <img src="{{ product.thumbnail }}" alt="{{ product.title }}" width="50" height="50">
+            <p>{{ product.title }}</p>
         </div>
         <div class="card-body">
             <!--<i class="icofont-10x icofont-{{ product.thumbnail }}"></i>
             <img src="{{ product.thumbnail }}" alt="{{ product.title }}" width="50" height="50">-->
             <form>
-            <div class="row">
-                <div class="cell">
-                <label>Item:</label>
-                </div>
-                <div class="cell">
-                <em>{{ product.title }}</em>
-                </div>
-            </div>
             <div class="row">
                 <div class="cell">
                 <label>Category:</label>
@@ -58,7 +51,7 @@
             </form>
         </div>
         <div class="card-footer">
-            <button @click="addToCart(product.id, quantity)" class="btn btn-light">
+            <button @click="addToCart(product.title, quantity)" class="btn btn-light">
             Add to cart
             </button>
         </div>

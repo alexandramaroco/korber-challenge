@@ -27,7 +27,7 @@
                   <td>{{ key }}</td>
                   <td>${{ getPrice(key) }}</td>
                   <td class="center">{{ quantity }}</td>
-                  <td>$ {{ quantity * getPrice(key) }}</td>
+                  <td>$ {{ (quantity * getPrice(key)).toFixed(2) }}</td>
                   <td class="center">
                     <button @click="remove(key)" class="btn btn-light cart-remove">
                       &times;
@@ -52,9 +52,9 @@
 export default {
   props: ['toggle', 'cart', 'inventory', 'remove'],
   methods: {
-    getPrice (id) {
+    getPrice (title) {
       const product = this.inventory.find((p) => {
-        return p.id === id
+        return p.title === title
       })
       return product.price.toFixed(2)
     },
