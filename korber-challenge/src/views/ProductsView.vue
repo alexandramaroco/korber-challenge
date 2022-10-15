@@ -3,27 +3,38 @@
       <h1>Products</h1>
 
       <div class="card-container">
+        <Pagination v-model="page" :records="500" :per-page="25" @paginate="myCallback"></Pagination>
+        
         <ProductCard
-          v-for="product in inventory.slice(0,6)"
+          v-for="product in inventory"
           :key="product.id"
           class="card"
           :product="product"
-          :addToCart="addToCart"
+          :addToCart="addToCart"/>
+
+        </Pagination>
+        
+        
         />
       </div>
     </main>
 </template>
 
 <script>
-// @ is an alias to /src
-/* import HelloWorld from '@/components/HelloWorld.vue' */
+import Pagination from 'v-pagination-3'
 import ProductCard from '@/components/ProductCard.vue'
 
 export default {
   name: 'ProductsView',
+  data () {
+    return {
+      page: 1
+    }
+  },
   props: ['inventory', 'addToCart'],
   components: {
-    ProductCard
+    ProductCard,
+    Pagination
   }
 }
 </script>
