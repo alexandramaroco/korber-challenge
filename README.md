@@ -14,6 +14,10 @@ I appreciate any feedback you might want to give and want to thank you very much
 
 git clone [copy repo URL]
 
+### Move to the code's directory
+
+cd korber-challenge
+
 ### Compile project
 
 npm run serve
