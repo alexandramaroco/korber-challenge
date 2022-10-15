@@ -1,2 +1,2 @@
 # korber-challenge
-Körber Challenge
+Körber Challenge Pharma Frontend
